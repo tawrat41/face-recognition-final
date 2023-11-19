@@ -65,7 +65,7 @@ st.markdown(
     """
     <style>
         body {
-            font-family: 'Comic Neue', cursive;
+            font-family: 'Comic Sans MS', sans-serif !important;
             background-color: #fae0e4;  
         }
 
@@ -125,7 +125,6 @@ st.markdown(
             color: white;
         }
 
-
         #data-collect{
             font-size:2rem;
             font-weight:bold;
@@ -150,6 +149,10 @@ st.markdown(
         }
         [data-testid="stSidebar"][aria-expanded="true"] {
             background-color: #f7cad0 !important; /* Change the color code to your desired color */
+        }
+
+        .streamlit-slider {
+            color: #ff0a54 !important;
         }
             
     </style>
