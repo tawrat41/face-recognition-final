@@ -241,32 +241,29 @@ elif section == "Step - 1":
     st.markdown("<div class='center'><h2>Teach the Computer to Recognize your Face</h2></div>", unsafe_allow_html=True)
     st.markdown("""
                 <style>
-
-
                 </style>""", unsafe_allow_html=True)
 
-
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
-
-   
-
     with col0:
-        # st.markdown("""
-        #     <style>
-        #     button[kind="primary"]  {
-        #         background-color: white;
-        #         color: grey;
-        #         font-weight: bold #ff0a54;
-        #         border: 2px solid ;
-        #         display: block;
-        #         margin-left: auto;
-        #         margin-right: auto;
-        #         # width: 8rem;
-        #         # text-align: center;
-        #         padding-left: 15px;
-        #         padding-right: 15px;
-        #     }
-        #     </style>""", unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #     button[kind="primary"]  {
+    #         background-color: white;
+    #         color: grey;
+    #         font-weight: bold #ff0a54;
+    #         border: 2px solid ;
+    #         display: block;
+    #         margin-left: auto;
+    #         margin-right: auto;
+    #         # width: 8rem;
+    #         # text-align: center;
+    #         padding-left: 15px;
+    #         padding-right: 15px;
+    #     }
+    #     </style>""", unsafe_allow_html=True)
         st.button("Step 1", key="step1", help="Collect Data", on_click=lambda: st.session_state.update({"page_index": 3}))
         st.markdown("""<p style="font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
     with col1:
@@ -354,7 +351,10 @@ elif section == "Collect Data":
 # step - 2  /////////////////////////////////////////////////////////////////////////////////////
 elif section == "Step - 2":
     st.markdown("<div class='center'><h2>Teach the Computer to Recognize your Face</h2></div>", unsafe_allow_html=True)
-    
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
     with col0:
@@ -637,8 +637,10 @@ elif section == "Train":
                 st.markdown(f"<h4 style='text-align: center;'>Training complete! Training Accuracy: <span style='color:#ff0a54; font-size: 1.8rem; font-weight:bold'>{formatted_percentage}</span></h4>", unsafe_allow_html=True)
 
                 # Save the model
-                model.save('model.h5')
 
+                st.markdown(""" <h5 style="text-align:center;">A good accuracy is between 90-95%. If your model's accuracy is not good enough, click on the "Next" button, else click on the "Skip" button  </h5>""", unsafe_allow_html=True)
+
+                model.save('model.h5')
             else:
                 st.markdown(f"<h5 style='text-align: center; color:red'>No images available for training. Please capture or upload images.</h4>", unsafe_allow_html=True)
 
@@ -646,10 +648,13 @@ elif section == "Train":
         st.error(f"An error occurred during training: {str(e)}")
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
-    col1, col2= st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.button("Previous", key="prev_para", on_click=lambda: st.session_state.update({"page_index": 8}))
     with col2:
+        st.button("Skip", key="skip", on_click=lambda: st.session_state.update({"page_index": 11}))
+
+    with col3:
         st.button("Next", key="next_re-train", on_click=lambda: st.session_state.update({"page_index": 10}))
        
 # re train /////////////////////////////////////////////////////////////////////////////////////
@@ -775,7 +780,10 @@ elif section == "Re-Train (if required)":
 elif section == "Step - 3":
     
     st.markdown("<div class='center'><h2>Teach the Computer to Recognize your Face</h2></div>", unsafe_allow_html=True)
-
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
     with col0:
@@ -882,7 +890,7 @@ elif section == "Test":
 
                 else:
                     # st.write("Result: This is not you.")
-                    st.markdown(f"<h4 style='text-align: center;'>Result: This is not YOU!.</h4>", unsafe_allow_html=True) 
+                    st.markdown(f"<h4 style='text-align: center;'>Result: This is not YOU!</h4>", unsafe_allow_html=True) 
 
             except FileNotFoundError as e:
                 # st.warning(str(e))
@@ -967,7 +975,10 @@ elif section == "Improve Accuracy":
 # step - 4 /////////////////////////////////////////////////////////////////////////////////////
 elif section == "Step - 4":
     st.markdown("<div class='center'><h2>Teach the Computer to Recognize your Face</h2></div>", unsafe_allow_html=True)
-    
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
     with col0:
