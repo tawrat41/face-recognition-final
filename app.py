@@ -121,8 +121,9 @@ st.markdown(
         }
 
         .stButton button:hover{
-            background-color: #ff0a54;
+            background-color: #fbb1bd;
             color: white;
+            border: 2px solid #fbb1bd;
         }
 
         #data-collect{
