@@ -18,7 +18,7 @@ st.set_page_config(
 
 # Function to capture image from webcam using OpenCV
 def capture_and_save_image(label, save_folder):
-    img_file_buffer = st.camera_input("Take a picture")
+    img_file_buffer = st.camera_input("Take Photo and then click Capture button again!")
 
     if img_file_buffer is not None:
         # Read image file buffer with OpenCV
@@ -58,7 +58,7 @@ get_session_state()
 
 # st.sidebar.title("Make your Face Recognition System")
 st.sidebar.markdown("<h1>Make your Face Recognition System</h1>", unsafe_allow_html=True)
-section = st.sidebar.radio("Steps to follow - ", ["Introduction", "Face Recognition by Computer", "Step - 1", "Collect Data", "Step - 2","Training Initiation", "Machine Learning", "Setup the Model", "Training Parameters", "Train", "Re-Train", "Step - 3","Test", "Improve Accuracy", "Step - 4", "Conclusion"],  index=session_state.page_index)
+section = st.sidebar.radio("Steps to follow - ", ["Introduction", "Face Recognition by Computer", "Step - 1", "Collect Data", "Step - 2","Training Initiation", "Machine Learning", "Setup the Model", "Training Parameters", "Train", "Re-Train (if required)", "Step - 3","Test", "Improve Accuracy", "Step - 4", "Conclusion"],  index=session_state.page_index)
 
 # Set the theme to light
 st.markdown(
@@ -87,10 +87,6 @@ st.markdown(
             margin-right: 50px;
         }
 
-        .stVideo video {
-            width: 50%;
-        }
-
         h1{
             color:#ff0a54;
             text-align: center;
@@ -114,6 +110,7 @@ st.markdown(
             color: #ff0a54;
             font-weight: bold #ff0a54;
             border: 2px solid ;
+            border-radius: 5px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -159,12 +156,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-# # new code
-# session_state = st.session_state
-# # Initialize page index if not present
-# if 'page_index' not in session_state:
-#     session_state.page_index = 0
 
 
 me_files = None
@@ -254,24 +245,42 @@ elif section == "Step - 1":
 
     col0, col1, col2, col3, col4, col5, col6 = st.columns(7)
 
+   
+
     with col0:
+        # st.markdown("""
+        #     <style>
+        #     button[kind="primary"]  {
+        #         background-color: white;
+        #         color: grey;
+        #         font-weight: bold #ff0a54;
+        #         border: 2px solid ;
+        #         display: block;
+        #         margin-left: auto;
+        #         margin-right: auto;
+        #         # width: 8rem;
+        #         # text-align: center;
+        #         padding-left: 15px;
+        #         padding-right: 15px;
+        #     }
+        #     </style>""", unsafe_allow_html=True)
         st.button("Step 1", key="step1", help="Collect Data", on_click=lambda: st.session_state.update({"page_index": 3}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
     with col1:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col2:
-        st.button("Step 2", key="step1-2", help="Train", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Train</p> """, unsafe_allow_html=True)
+        st.button("Step 2", key="step1-2", help="Train", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Train</p> """, unsafe_allow_html=True)
     with col3:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col4:
-        st.button("Step 3", key="step3", help="Test", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
+        st.button("Step 3", key="step3", help="Test", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
     with col5:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col6:
-        st.button("Step 4", key="step4", help="Export", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
+        st.button("Step 4", key="step4", help="Export", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
 
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
@@ -347,22 +356,22 @@ elif section == "Step - 2":
 
     with col0:
         st.button("Step 1", key="step1", help="Collect Data", on_click=lambda: st.session_state.update({"page_index": 3}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
     with col1:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
-    with col2:
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+    with col2:  
         st.button("Step 2", key="step2", help="Train", on_click=lambda: st.session_state.update({"page_index": 5}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Train</p> """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Train</p> """, unsafe_allow_html=True)
     with col3:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col4:
-        st.button("Step 3", key="step3", help="Test", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
+        st.button("Step 3", key="step3", help="Test", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
     with col5:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col6:
-        st.button("Step 4", key="step4", help="Export", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
+        st.button("Step 4", key="step4", help="Export", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
@@ -552,87 +561,86 @@ elif section == "Train":
     not_me_files = st.session_state.not_me_files
 
     # Train the model
-    if st.button("Train Model"):
-        # Gather paths for uploaded and captured images
-        me_folder = os.path.abspath('captured_images/me')
-        not_me_folder = os.path.abspath('captured_images/not_me')
+    try:
+        if st.button("Train Model"):
+            # Gather paths for uploaded and captured images
+            me_folder = os.path.abspath('captured_images/me')
+            not_me_folder = os.path.abspath('captured_images/not_me')
 
-        # Process uploaded images
-        processed_images = []
-        labels = []
+            # Process uploaded images
+            processed_images = []
+            labels = []
 
-        for uploaded_file in me_files or []:
-            img = image.load_img(uploaded_file, target_size=(224, 224))
-            img = image.img_to_array(img)
-            img = np.expand_dims(img, axis=0)
-            img = preprocess_input(img)
-            processed_images.append(img)
-            labels.append(1)  # 'me' class
-
-        for uploaded_file in not_me_files or []:
-            img = image.load_img(uploaded_file, target_size=(224, 224))
-            img = image.img_to_array(img)
-            img = np.expand_dims(img, axis=0)
-            img = preprocess_input(img)
-            processed_images.append(img)
-            labels.append(0)  # 'not me' class
-
-        # Process captured images if the folders exist
-        if os.path.exists(me_folder) and os.path.exists(not_me_folder):
-            for img_filename in os.listdir(me_folder):
-                img_path = os.path.join(me_folder, img_filename)
-                img = image.load_img(img_path, target_size=(224, 224))
+            for uploaded_file in me_files or []:
+                img = image.load_img(uploaded_file, target_size=(224, 224))
                 img = image.img_to_array(img)
                 img = np.expand_dims(img, axis=0)
                 img = preprocess_input(img)
                 processed_images.append(img)
-                labels.append(1)
+                labels.append(1)  # 'me' class
 
-            for img_filename in os.listdir(not_me_folder):
-                img_path = os.path.join(not_me_folder, img_filename)
-                img = image.load_img(img_path, target_size=(224, 224))
+            for uploaded_file in not_me_files or []:
+                img = image.load_img(uploaded_file, target_size=(224, 224))
                 img = image.img_to_array(img)
                 img = np.expand_dims(img, axis=0)
                 img = preprocess_input(img)
                 processed_images.append(img)
-                labels.append(0)
+                labels.append(0)  # 'not me' class
 
-        if processed_images:  # Check if any images are available for training
-            X_train = np.vstack(processed_images)
-            y_train = np.array(labels)
+            # Process captured images if the folders exist
+            if os.path.exists(me_folder) and os.path.exists(not_me_folder):
+                for img_filename in os.listdir(me_folder):
+                    img_path = os.path.join(me_folder, img_filename)
+                    img = image.load_img(img_path, target_size=(224, 224))
+                    img = image.img_to_array(img)
+                    img = np.expand_dims(img, axis=0)
+                    img = preprocess_input(img)
+                    processed_images.append(img)
+                    labels.append(1)
 
-            # Rest of your training code...
-        else:
-            st.warning("No images available for training. Please capture or upload images.")
+                for img_filename in os.listdir(not_me_folder):
+                    img_path = os.path.join(not_me_folder, img_filename)
+                    img = image.load_img(img_path, target_size=(224, 224))
+                    img = image.img_to_array(img)
+                    img = np.expand_dims(img, axis=0)
+                    img = preprocess_input(img)
+                    processed_images.append(img)
+                    labels.append(0)
 
-    
-        # Train the model, save the model, etc.
-        st.markdown(f"<h5 style='text-align: center;'>Training with <span style='color:#ff0a54; font-size: 1.8rem;'>{epochs_duplicate} </span>epochs...</h4>", unsafe_allow_html=True)
+            if processed_images:  # Check if any images are available for training
+                X_train = np.vstack(processed_images)
+                y_train = np.array(labels)
 
-        base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-        x = base_model.output
-        x = GlobalAveragePooling2D()(x)
-        x = Dense(1024, activation='relu')(x)
-        predictions = Dense(2, activation='softmax')(x)  # 2 classes: 'me' and 'not me'
-        model = Model(inputs=base_model.input, outputs=predictions)
+                # Rest of your training code...
+                st.markdown(f"<h5 style='text-align: center;'>Training with <span style='color:#ff0a54; font-size: 1.8rem;'>{epochs_duplicate} </span>epochs...</h4>", unsafe_allow_html=True)
 
-        for layer in base_model.layers:
-            layer.trainable = False
+                base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+                x = base_model.output
+                x = GlobalAveragePooling2D()(x)
+                x = Dense(1024, activation='relu')(x)
+                predictions = Dense(2, activation='softmax')(x)  # 2 classes: 'me' and 'not me'
+                model = Model(inputs=base_model.input, outputs=predictions)
 
-        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-        model.fit(X_train, y_train, epochs=epochs)  # Training with user-defined epochs
+                for layer in base_model.layers:
+                    layer.trainable = False
 
-        # Calculate training accuracy
-        train_loss, train_acc = model.evaluate(X_train, y_train, verbose=0)
-        # st.write(f"Training complete! Training Accuracy: {train_acc * 100:.2f}%")
-        # Format the percentage with bold text
-        formatted_percentage = f"{train_acc * 100:.2f}%"
+                model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+                model.fit(X_train, y_train, epochs=epochs)  # Training with user-defined epochs
 
-        # Use st.markdown to display the message with h4 heading and center-aligned text
-        st.markdown(f"<h4 style='text-align: center;'>Training complete! Training Accuracy: <span style='color:#ff0a54; font-size: 1.8rem;'>{formatted_percentage}</span></h4>", unsafe_allow_html=True)
+                # Calculate training accuracy
+                train_loss, train_acc = model.evaluate(X_train, y_train, verbose=0)
 
-        # Save the model
-        model.save('model.h5')
+                formatted_percentage = f"{train_acc * 100:.2f}%"
+                st.markdown(f"<h4 style='text-align: center;'>Training complete! Training Accuracy: <span style='color:#ff0a54; font-size: 1.8rem; font-weight:bold'>{formatted_percentage}</span></h4>", unsafe_allow_html=True)
+
+                # Save the model
+                model.save('model.h5')
+
+            else:
+                st.markdown(f"<h5 style='text-align: center; color:red'>No images available for training. Please capture or upload images.</h4>", unsafe_allow_html=True)
+
+    except Exception as e:
+        st.error(f"An error occurred during training: {str(e)}")
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col1, col2= st.columns(2)
@@ -642,7 +650,7 @@ elif section == "Train":
         st.button("Next", key="next_re-train", on_click=lambda: st.session_state.update({"page_index": 10}))
        
 # re train /////////////////////////////////////////////////////////////////////////////////////
-elif section == "Re-Train":
+elif section == "Re-Train (if required)":
     st.markdown(
     """
     <style>
@@ -769,22 +777,22 @@ elif section == "Step - 3":
 
     with col0:
         st.button("Step 1", key="step1", help="Collect Data", on_click=lambda: st.session_state.update({"page_index": 3}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
     with col1:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col2:
         st.button("Step 2", key="step2", help="Train", on_click=lambda: st.session_state.update({"page_index": 5}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Train</p> """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Train</p> """, unsafe_allow_html=True)
     with col3:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col4:
         st.button("Step 3", key="step3", help="Test", on_click=lambda: st.session_state.update({"page_index": 12}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
     with col5:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col6:
-        st.button("Step 4", key="step4", help="Export", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
+        st.button("Step 4", key="step4", help="Export", on_click=None,disabled=True)
+        st.markdown("""<p style="font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
@@ -798,59 +806,89 @@ elif section == "Step - 3":
 # test /////////////////////////////////////////////////////////////////////////////////////
 elif section == "Test":
     st.markdown('<h2 class="header"> Test the model </h2> ', unsafe_allow_html=True)
+    st.markdown("""
+                <style>
+                    #test-span{
+                        color: #ff0a54;
+                        font-weight: bold;
+                }
+                </style>
 
-    # Option to upload a test image
-    st.markdown(""" <h4>Upload Test Image</h4>  """, unsafe_allow_html=True)
-    test_image = st.file_uploader("", type=["jpg", "png"])
 
-    # Option to capture a test image
-    st.markdown(""" <h4 style="margin-top:15px">Capture Test Image</h4>  """ , unsafe_allow_html=True)
-    with st.form(key='test_form'):
-        if st.form_submit_button("Capture test Image"):
-            capture_and_save_image('test', os.path.abspath('captured_images/test_capture'))
+        """, unsafe_allow_html=True)
+
+
+
+    st.markdown("""
+                <div class=container style="margin-bottom:20px;"> <p>
+                It's time to put the model to the test. You can evaluate its performance by either <span id="test-span">uploading</span> an image or <span id="test-span">capturing</span> one in real-time. This testing phase will help you assess the model's capabilities in handling visual data, giving you valuable insights into its effectiveness. Choose the method that suits your evaluation preferences, whether it's uploading a pre-existing image or utilizing the model's image-capturing feature for a more dynamic experience.</p>  </div> """, unsafe_allow_html=True)
+
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Option to upload a test image
+        st.markdown(""" <h4>Upload Test Image</h4>  """, unsafe_allow_html=True)
+        test_image = st.file_uploader("", type=["jpg", "png"])
+
+    with col2: 
+        # Option to capture a test image
+        st.markdown(""" <h4 style="margin-bottom:30px">Capture Test Image</h4>  """ , unsafe_allow_html=True)
+        with st.form(key='test_form'):
+            if st.form_submit_button("Capture test Image"):
+                capture_and_save_image('test', os.path.abspath('captured_images/test_capture'))
+
+    
 
     # Process the uploaded or captured test image
-    if test_image or os.path.exists('captured_images/test_capture'):
-        # st.write("Processing test image...")
-        st.markdown(f"<h5 style='text-align: center;'>Processing test image...</h5>", unsafe_allow_html=True)
-        
-        if os.path.exists('captured_images/test_capture'):
-            # Use the captured test image
-            test_image_path = os.path.join('captured_images/test_capture', os.listdir('captured_images/test_capture')[0])
+    if st.button("Test Model"):
+        if test_image or os.path.exists('captured_images/test_capture'):
+            st.markdown(f"<h5 style='text-align: center;'>Processing test image...</h5>", unsafe_allow_html=True)
+            
+            if os.path.exists('captured_images/test_capture'):
+                # Use the captured test image
+                test_image_path = os.path.join('captured_images/test_capture', os.listdir('captured_images/test_capture')[0])
+            else:
+                # Use the uploaded test image
+                test_image_path = 'uploaded_test_image.png'
+                with open(test_image_path, "wb") as f:
+                    f.write(test_image.read())
+
+            img = image.load_img(test_image_path, target_size=(224, 224))
+            img = image.img_to_array(img)
+            img = np.expand_dims(img, axis=0)
+            img = preprocess_input(img)
+
+            # Make prediction
+            try:
+                model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+                x = model.output
+                x = GlobalAveragePooling2D()(x)
+                x = Dense(1024, activation='relu')(x)
+                predictions = Dense(2, activation='softmax')(x)  # 2 classes: 'me' and 'not me'
+                model = Model(inputs=model.input, outputs=predictions)
+
+                model.load_weights('model.h5')
+                prediction = model.predict(img)
+                predicted_class = np.argmax(prediction)
+
+                # Display result
+                if predicted_class == 1:
+                    # st.write("Result: This is you!")
+                    st.markdown(f"<h4 style='text-align: center;'>Result: This is you!</h4>", unsafe_allow_html=True)
+
+                else:
+                    # st.write("Result: This is not you.")
+                    st.markdown(f"<h4 style='text-align: center;'>Result: This is not YOU!.</h4>", unsafe_allow_html=True) 
+
+            except FileNotFoundError as e:
+                # st.warning(str(e))
+                st.markdown(""" <h5 style="color:red;">Trained model not found! Train the Model first.</h5> """, unsafe_allow_html=True)
+
         else:
-            # Use the uploaded test image
-            test_image_path = 'uploaded_test_image.png'
-            with open(test_image_path, "wb") as f:
-                f.write(test_image.read())
+            st.markdown(""" <h5 style="color:red;">Please upload a test image or capture one.</h5> """, unsafe_allow_html=True)
 
-        img = image.load_img(test_image_path, target_size=(224, 224))
-        img = image.img_to_array(img)
-        img = np.expand_dims(img, axis=0)
-        img = preprocess_input(img)
-
-        # Make prediction
-        model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-        x = model.output
-        x = GlobalAveragePooling2D()(x)
-        x = Dense(1024, activation='relu')(x)
-        predictions = Dense(2, activation='softmax')(x)  # 2 classes: 'me' and 'not me'
-        model = Model(inputs=model.input, outputs=predictions)
-
-        model.load_weights('model.h5')
-        prediction = model.predict(img)
-        predicted_class = np.argmax(prediction)
-
-        # Display result
-        if predicted_class == 1:
-            # st.write("Result: This is you!")
-            st.markdown(f"<h4 style='text-align: center;'>Result: This is you!</h4>", unsafe_allow_html=True)
-
-        else:
-            # st.write("Result: This is not you.")
-            st.markdown(f"<h4 style='text-align: center;'>Result: This is not YOU!.</h4>", unsafe_allow_html=True)
-    else:
-        st.warning("Please upload a test image or capture one.")
-
+            
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
     col1, col2= st.columns(2)
     with col1:
@@ -931,22 +969,22 @@ elif section == "Step - 4":
 
     with col0:
         st.button("Step 1", key="step1", help="Collect Data", on_click=lambda: st.session_state.update({"page_index": 3}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Collect Data</p>""", unsafe_allow_html=True)
     with col1:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col2:
         st.button("Step 2", key="step2", help="Train", on_click=lambda: st.session_state.update({"page_index": 5}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Train</p> """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Train</p> """, unsafe_allow_html=True)
     with col3:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col4:
         st.button("Step 3", key="step3", help="Test", on_click=lambda: st.session_state.update({"page_index": 12}))
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Test</p>    """, unsafe_allow_html=True)
     with col5:
-        st.markdown("""<p style="text-align:center;">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
+        st.markdown("""<p style="">&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&ndash;&#10148;</p>""", unsafe_allow_html=True)
     with col6:
         st.button("Step 4", key="step4", help="Export", on_click=None)
-        st.markdown("""<p style="text-align:center; font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
+        st.markdown("""<p style="font-weight: bold;">Export</p>    """, unsafe_allow_html=True)
 
 
     st.markdown('<div class="blank"></div>', unsafe_allow_html=True)
